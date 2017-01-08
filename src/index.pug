@@ -1,0 +1,18 @@
+include _phug
+include _layout
+  noscript You need to enable JavaScript in order to play this game.
+  article.page-width
+    section#description
+      h1= appTitle
+      p= description
+    section#credits
+      :markdown-it
+        Credits
+        -------
+        Made by [codeartistic.ninja](http://the.codeartistic.ninja/)
+  #display
+    article
+      .page-width
+        section.passage
+          #story: include ./assets/story/traveler.pug
+  script(type="text/javascript", src="script/main.js")

@@ -1,0 +1,52 @@
+@page-width: 32em;
+
+@import "_reset";
+
+@media screen and (min-width: 1280px) {
+  html {
+    font-size: 32px;
+  }
+}
+
+html {
+	background-color: #000;
+  // background-image: url("moon.png");
+  background-position: center bottom;
+  background-size: cover;
+	color: #fff;
+}
+
+noscript, .noscript {
+  display: block;
+  background-color: #f90;
+  color: #420;
+  text-align: center;
+  padding: .2em;
+}
+
+article {
+  background-color: rgba(0, 0, 0, 0.5);
+	padding: 1em .8em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+p {
+  margin: 0.8em 0;
+}
+
+.page-width {
+  margin-top: 1em;
+
+  @media (max-height: 600px) {
+    margin-top: 0;
+  }
+}
+
+@import "./_story";

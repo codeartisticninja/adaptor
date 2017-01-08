@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "**/*.tsx",
+        "!node_modules/**"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "files": [
+        "src/script/_classes/GameApp.ts",
+        "src/script/_classes/joypad.ts",
+        "src/script/_classes/MapSprite.ts",
+        "src/script/_classes/MapState.ts",
+        "src/script/_classes/Player.ts",
+        "src/script/_classes/StartScreen.ts",
+        "src/script/_d.ts/node.d.ts",
+        "src/script/_d.ts/phaser/p2.d.ts",
+        "src/script/_d.ts/phaser/phaser.comments.d.ts",
+        "src/script/_d.ts/phaser/phaser.d.ts",
+        "src/script/_d.ts/phaser/pixi.comments.d.ts",
+        "src/script/_d.ts/phaser/pixi.d.ts",
+        "src/script/main.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}

@@ -1,0 +1,52 @@
+pre #start
+#start
+  p Once upon {{$("_visits")}} times...
+  p there was a {~handsome|gorgeous|pretty|beautiful|nice} man..
+  // p(data-_interval=-1): img(src="images/cover.png")
+  p and that man..
+  p lived in a {&can|van|Sedan|pan}..
+  ul
+    li
+      p Then one day..
+      p the sun rose up and shined upon him..
+    li
+      p Then one night..
+      p he got mugged..
+    | {{ if ($("_visits") >= 3) [[
+    li
+      p Then at last..
+      p {he found love..|he found happiness|he found peace..|he rested his soul..}
+    | ]] }}
+    | {{ if (!$("#forest[_visits]")) [[
+    li
+      p Then he went to the forest..
+      pre #forest
+    | ]] }}
+  p That's all, folks!
+  p You wanna hear it again..?
+  ul
+    li
+      p Yes please!
+      pre #start
+    li(title="nah..")
+      p Are you sure..?
+      ul
+        li(title="YES!")
+          p Hmmm.. okay... hmmm...
+          p You wanna go to the forest?
+          ul
+            li(title="Do I have a choice?")
+              p Nope! :p
+              pre #forest
+        li
+          p *sigh*... Okay, fine!
+          pre #start
+#forest
+  article.forest
+  p Ah yes! The {beautiful|wonderful|peaceful} forest! What a place to behold.
+  p(data-_interval=-1): img(src="style/backgrounds/forest.jpg")
+  p Hmm.. you sure you don't wanna hear the story again..?
+  ul
+    li(title="uhmm...")
+      pre #start
+      

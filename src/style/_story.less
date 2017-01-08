@@ -1,0 +1,141 @@
+html {
+  font-family: Georgia, serif;
+}
+
+#display {
+  article {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 3em #000;
+    padding: 0;
+    position: relative;
+    text-shadow: -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 1px 1px 0 #000;
+
+    .page-width {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 0 3em #000;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 1em;
+      position: relative;
+
+      @media screen and (max-width: 700px) {
+        max-height: 100vh;
+        overflow-y: auto;
+      }
+    }
+
+    &.forest {
+      background-image: url("backgrounds/forest.jpg");
+
+      .page-width {
+        background-image: url("backgrounds/forest.blur.jpg");
+      }
+    }
+
+    &.city {
+      background-image: url("backgrounds/city.jpg");
+
+      .page-width {
+        background-image: url("backgrounds/city.blur.jpg");
+      }
+    }
+
+    .passage {
+      margin-top: 0;
+      min-height: 1em;
+      transition-duration: 6s;
+
+      &::after {
+        content: " ";
+        display: block;
+        clear: both;
+      }
+      /* &.hidden {
+        margin-top: 0;
+      } */
+    }
+
+    &:last-child {
+      .passage:last-child {
+        margin-top: 30vh;
+        margin-bottom: 30vh;
+        min-height: 40vh;
+      }
+    }
+  }
+
+  p {
+    opacity: 1;
+    transition-duration: 1s;
+
+    &.hidden {
+      opacity: 0;
+    }
+
+    &:last-child {
+      img {
+        margin-bottom: -20vh;
+      }
+    }
+  }
+
+
+  ul {
+    background-color: #ffe;
+    background-position: center;
+    box-shadow: 0 0 1em #000;
+    color: #000;
+    font-weight: bold;
+    opacity: 1;
+    padding: 1em;
+    padding-bottom: 10vh;
+    text-align: right;
+    text-shadow: none;
+    transition-duration: 2s;
+
+    position: fixed;
+    bottom: -.25em;
+    right: 10vw;
+    // width: 75vw;
+    // width: @page-width;
+
+    li {
+      opacity: 1;
+      transition-duration: .5s;
+      max-height: 4em;
+      overflow: hidden;
+      position: relative;
+
+      a {
+        display: block;
+        opacity: .7;
+        padding: .5em;
+
+        &:focus, &:hover {
+          opacity: 1;
+        }
+      }
+      &.hidden {
+        max-height: 0;
+      }
+      /* &.shown {
+        box-shadow: 0 0 1em #000;
+      } */
+    }
+
+    /* &:last-child {
+      float: right;
+    } */
+    &.hidden {
+      opacity: 0;
+      bottom: -40vh;
+    }
+  }
+
+
+}
+
