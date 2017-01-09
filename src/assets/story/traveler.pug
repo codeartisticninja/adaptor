@@ -1,16 +1,25 @@
+p {$health|100}
 pre #start
 #start
+  p You feel {$health|LTE 0|dead|LT 10|terrible|LT 30|bad|LT 60|okay|LT 80|pretty good|great}.
   p Hmmm... where to go?
   ul
     li(title="The forest")
-      pre #forest
+      pre #forest ^
+      pre #start
     li(title="The city")
-      pre #city
+      pre #city ^
+      pre #start
 #forest
   p You decide to go to the forest.
   article.forest
   p The forest is nice and peaceful.
+    | {{ if ($("health") LT 100) [[{$health|+19}]] }}
+  pre ^
 #city
   p You decide to go to the city.
   article.city
-  p The city loud and noisy.
+  p The city is loud and noisy.
+    | {{ if ($("health") GT 0) [[{$health|+-9}]] }}
+  pre ^
+

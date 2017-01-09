@@ -4,7 +4,7 @@ import Teller = require("./Teller");
 /**
  * WebStory class
  * 
- * @date 08-01-2017
+ * @date 10-01-2017
  */
 
  var _nextChoiceId=0;
@@ -54,7 +54,7 @@ class WebStory {
       this.currentTeller = null;
     }
     if (!this.currentTeller) {
-      this.currentElement = this.nextElement || this.callStack.pop();
+      this.currentElement = this.nextElement // || this.callStack.pop();
       if (this.currentElement) {
         if (this.choiceSelector) {
           var els = this.currentElement.querySelectorAll(this.choiceSelector);
@@ -66,21 +66,6 @@ class WebStory {
         }
         this.nextElement = <HTMLElement>this.currentElement.nextElementSibling;
         var element = <HTMLElement>document.importNode(this.currentElement, true);
-        if (this.choiceSelector) {
-          var tmpStorage:string[] = [];
-          var els = element.querySelectorAll(this.choiceSelector);
-          for (var i=0;i<els.length;i++) {
-            els.item(i).innerHTML = "" + (tmpStorage.push(els.item(i).innerHTML)-1);
-          }
-        }
-        element.innerHTML = this._preProcess(element.innerHTML);
-        if (this.choiceSelector) {
-          var els = element.querySelectorAll(this.choiceSelector);
-          for (var i=0;i<els.length;i++) {
-            els.item(i).innerHTML = tmpStorage[parseInt(els.item(i).innerHTML)];
-          }
-        }
-        this._showElement(element);
         var tellerCandidate:typeof Teller;
         for (var selector in this.tellers) {
           if (this.currentElement.matches(selector)) {
@@ -88,9 +73,27 @@ class WebStory {
           }
         }
         if (tellerCandidate) {
+          if (this.choiceSelector) {
+            var tmpStorage:string[] = [];
+            var els = element.querySelectorAll(this.choiceSelector);
+            for (var i=0;i<els.length;i++) {
+              els.item(i).innerHTML = "" + (tmpStorage.push(els.item(i).innerHTML)-1);
+            }
+          }
+          element.innerHTML = this._preProcess(element.innerHTML);
+          if (this.choiceSelector) {
+            var els = element.querySelectorAll(this.choiceSelector);
+            for (var i=0;i<els.length;i++) {
+              els.item(i).innerHTML = tmpStorage[parseInt(els.item(i).innerHTML)];
+            }
+          }
+          this._showElement(element);
           this.currentTeller = new tellerCandidate(this, element);
         } else {
-          setTimeout(()=>{ this.continue(); }, 128);
+          this.currentElement.dataset["_visits"] = this.currentElement.dataset["_visits"] || "0";
+          this.currentElement.dataset["_visits"] = "" + (parseInt(this.currentElement.dataset["_visits"]) + 1);
+          this.nextElement = <HTMLElement>this.currentElement.firstElementChild;
+          setTimeout(()=>{ this.continue(); }, 50);
         }
       } else {
         console.log("END OF STORY!!");
@@ -124,9 +127,7 @@ class WebStory {
   goTo(section:HTMLElement|string, currentTeller:Teller) {
     if (this.currentTeller === currentTeller) {
       var el = <HTMLElement>this._getElement(section);
-      el.dataset["_visits"] = el.dataset["_visits"] || "0";
-      el.dataset["_visits"] = "" + (parseInt(el.dataset["_visits"]) + 1);
-      this.nextElement = <HTMLElement>el.firstElementChild;
+      this.nextElement = el;
       this.impatience = 0;
       return this.continue(currentTeller);
     }
@@ -260,14 +261,43 @@ class WebStory {
   private _getElement(selector:string|HTMLElement, context?:HTMLElement) {
     context = context || this.currentElement || this.storyElement || document.body;
     if (typeof selector === "string") {
-      if (selector.trim().substr(0, 1) === "#") {
-        context = this.storyElement;
+      var parts = selector.trim().split(/\s+/g);
+      var l = parts.length * 2;
+      while (0 < parts.length && parts.length < l) {
+        l = parts.length;
+        if (parts[0].substr(0, 1) === "#") {
+          context = this.storyElement;
+        }
+        if (parts[0].indexOf(".+") !== -1) {
+          while (parts[0].substr(0,1) === ".") {
+            parts[0] = parts[0].substr(1);
+            context = context.parentElement;
+          }
+          while (parts[0].substr(0,1) === "+") {
+            parts[0] = parts[0].substr(1);
+            context = <HTMLElement>context.nextElementSibling;
+          }
+          parts.shift();
+        }
+        if (parts[0] === "..") {
+          parts.shift();
+          context = context.parentElement;
+        }
+        if (parts[0] === "0") {
+          parts.shift();
+          context = <HTMLElement>context.firstElementChild;
+        }
+        if (parts[0] === "+") {
+          parts.shift();
+          context = <HTMLElement>context.nextElementSibling;
+        }
+        if (parts[0] === "-") {
+          parts.shift();
+          context = <HTMLElement>context.previousElementSibling;
+        }
       }
-      while (selector.trim().substr(0, 3) === ".. ") {
-        selector = selector.trim().substr(3);
-        context = context.parentElement;
-      }
-      return context.querySelector(selector);
+      selector = parts.join(" ").trim();
+      return selector ? context.querySelector(selector) : context;
     } else {
       return selector;
     }
@@ -329,16 +359,29 @@ class WebStory {
     var parts = tag.split("|");
     if (parts[0].substr(0,1) === "$") {
       parts[0] = parts[0].substr(1);
-      tag = this.get(parts[0]);
+      tag = this.get(this._htmlDequote(parts[0]));
       if (parts.length === 2) {
-        this.set(parts[0], this._jsonParse(parts[1]));
+        tag = "";
+        if (parts[1].substr(0,1) === "+") {
+          parts[1] = parts[1].substr(1);
+          this.alter(parts[0], this._jsonParse(this._htmlDequote(parts[1])));
+        } else {
+          this.set(parts[0], this._jsonParse(this._htmlDequote(parts[1])));
+        }
       } else
       if (parts.length > 2) {
-        var r = eval(JSON.stringify(tag) + parts[1]);
-        if (r) {
-          tag = parts[2] || "";
-        } else {
-          tag = parts[3] || "";
+        parts.shift();
+        while (parts.length >= 2) {
+          var r = eval(JSON.stringify(tag) + this._htmlDequote(parts.shift()));
+          if (r) {
+            tag = parts.shift();
+            parts = [];
+          } else {
+            parts.shift();
+          }
+        }
+        if (parts.length) {
+          tag = parts.pop();
         }
       }
     } else
@@ -346,11 +389,7 @@ class WebStory {
       parts[0] = parts[0].substr(1);
       tag = parts[Math.floor(Math.random()*parts.length)];
     } else
-    if (parts[0].substr(0,5) === "&amp;") {
-      parts[0] = parts[0].substr(5);
-      tag = parts[(this.get("_visits")-1) % parts.length];
-    } else
-    if (parts[0].substr(0,1) === "&") {
+    if (parts[0].substr(0,1) === "@") {
       parts[0] = parts[0].substr(1);
       tag = parts[(this.get("_visits")-1) % parts.length];
     } else {
@@ -367,6 +406,14 @@ class WebStory {
 
   private _htmlDequote(str:string) {
     var d = document.createElement("textarea");
+    str = str.replace(/(\s|^)AND(\s|$)/g, " &amp;&amp; ");
+    str = str.replace(/(\s|^)OR(\s|$)/g,  " &#124;&#124; ");
+    str = str.replace(/(\s|^)NEQ(\s|$)/g, " !== ");
+    str = str.replace(/(\s|^)EQ(\s|$)/g,  " === ");
+    str = str.replace(/(\s|^)LTE(\s|$)/g, " &lt;= ");
+    str = str.replace(/(\s|^)GTE(\s|$)/g, " &gt;= ");
+    str = str.replace(/(\s|^)LT(\s|$)/g,  " &lt; ");
+    str = str.replace(/(\s|^)GT(\s|$)/g,  " &gt; ");
     d.innerHTML = str;
     return d.textContent;
   }

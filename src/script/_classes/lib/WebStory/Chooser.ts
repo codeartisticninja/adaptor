@@ -7,7 +7,7 @@ import WebStory = require("./WebStory");
 /**
  * Chooser class
  * 
- * @date 07-01-2017
+ * @date 09-01-2017
  */
 
 class Chooser extends Teller {
@@ -53,15 +53,18 @@ class Chooser extends Teller {
           _t.removeElement();
         }, 1024);
         _t.story.newSection();
-        _t.story.goSub("#"+id, _t);
+        _t.story.goTo("#"+id, _t);
       }, 512);
     }
   }
 
   private _showChoice(id:string) {
+    var _t = this;
     var p = this.element, i:number;
     var option:Element, options = p.children;
-    p.classList.add("hidden");
+    setTimeout(function() {
+      p.classList.add("hidden");
+    }, 256);
     for (i=0;i<options.length;i++) {
       option = options.item(i);
       if (option.id === id) {

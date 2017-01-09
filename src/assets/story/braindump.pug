@@ -4,24 +4,27 @@ pre #start
   p there was a {~handsome|gorgeous|pretty|beautiful|nice} man..
   // p(data-_interval=-1): img(src="images/cover.png")
   p and that man..
-  p lived in a {&can|van|Sedan|pan}..
+  p lived in a {@can|van|Sedan|pan}..
   ul
     li
       p Then one day..
       p the sun rose up and shined upon him..
+      pre ..+
     li
       p Then one night..
       p he got mugged..
-    | {{ if ($("_visits") >= 3) [[
+      pre ..+
+    | {{ if ($("_visits") GTE 3) [[
     li
       p Then at last..
       p {he found love..|he found happiness|he found peace..|he rested his soul..}
+      pre ..+
     | ]] }}
-    | {{ if (!$("#forest[_visits]")) [[
+    | {$ #forest[_visits] | ||
     li
       p Then he went to the forest..
       pre #forest
-    | ]] }}
+    | }
   p That's all, folks!
   p You wanna hear it again..?
   ul

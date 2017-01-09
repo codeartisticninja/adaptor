@@ -7,7 +7,7 @@ import WebStory = require("./WebStory");
 /**
  * Diverter class
  * 
- * @date 04-01-2017
+ * @date 10-01-2017
  */
 
 class Diverter extends Teller {
@@ -17,8 +17,11 @@ class Diverter extends Teller {
     this.removeElement();
     setTimeout(()=>{
       var dest = this.element.textContent.trim();
-      if (dest.substr(-2) === "->") {
-        dest = dest.substr(0, dest.length-2).trim();
+      if (dest === "^") {
+        this.story.return(this);
+      } else
+      if (dest.substr(-2) === " ^") {
+        dest = dest.substr(0, dest.length-1).trim();
         this.story.goSub(dest, this);
       } else {
         this.story.goTo(dest, this);
