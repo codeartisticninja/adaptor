@@ -3,6 +3,7 @@ html
   head
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=no")
+    meta(http-equiv="X-UA-Compatible", content="IE=EmulateIE9")
     if(title)
       - title += " - " + appTitle
     else
@@ -15,5 +16,8 @@ html
     meta(property="og:image", content=baseUrl+"images/cover.png")
     link(rel="stylesheet", type="text/css", href="style/style.css")
   body
+    | <!--[if IE]>
+    .noscript Sadly this game doesn't run on Internet Explorer.
+    | <![endif]-->
     yield
     include _piwik.html
