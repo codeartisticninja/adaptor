@@ -39,7 +39,7 @@
     <?php else: ?>
       <h1><?php echo $_GET["file"]; ?></h1>
       <form method="post" action="">
-        <p><textarea autofocus name="body" cols="64" rows="20"><?php echo htmlspecialchars($body); ?></textarea></p>
+        <p><textarea autofocus name="body" cols="64" rows="15"><?php echo htmlspecialchars($body); ?></textarea></p>
         <p><input type="submit" value="Save" /></p>
       </form>
     <?php endif; ?>
