@@ -18,7 +18,7 @@ var fs          = require("fs"),
  * Jakefile.js
  * For building web apps
  *
- * @date 04-01-2017
+ * @date 13-01-2017
  */
 var srcDir        = "./src/",
     outDir        = "./build/",
@@ -216,7 +216,8 @@ namespace("css", function(){
           if (--filesLeft === 0) { console.log("...dONE!"); complete(); }
         },
         function(err){
-          fail("\u0007LESS compilation failed!\t" + err);
+          console.log("\u0007LESS compilation failed!\t" + err);
+          fail();
         }
       );
     });

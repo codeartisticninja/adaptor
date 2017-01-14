@@ -7,7 +7,7 @@ import WebStory = require("./WebStory");
 /**
  * Chooser class
  * 
- * @date 09-01-2017
+ * @date 16-01-2017
  */
 
 class Chooser extends Teller {
@@ -38,12 +38,21 @@ class Chooser extends Teller {
       this.element.classList.add("hidden");
       this.element.removeAttribute("style");
       setTimeout(()=>{ this.element.classList.remove("hidden"); }, 50);
+      // this._startDodging();
+    } else {
+      clearTimeout(this._dodgeTO);
+      setTimeout(()=>{ this.element.classList.add("hidden"); }, 512);
+      this._dodgeTO = setTimeout(()=>{ this.element.classList.remove("hidden"); }, 2048);
     }
   }
 
   /*
     _privates
   */
+  private _lastDodge=0;
+  private _elementToDodge:HTMLElement;
+  private _dodgeTO:any;
+
   private _createChooseFn(id:string) {
     var _t = this;
     return function() {
@@ -51,6 +60,7 @@ class Chooser extends Teller {
       setTimeout(function(){
         setTimeout(function(){
           _t.removeElement();
+          _t._stopDodging();
         }, 1024);
         _t.story.newSection();
         _t.story.goTo("#"+id, _t);
@@ -73,6 +83,34 @@ class Chooser extends Teller {
         option.classList.add("hidden");
       }
     }
+  }
+
+  private _startDodging() {
+    var el = <HTMLElement>this.story.displayElement;
+    this._elementToDodge = null;
+    this._dodge = this._dodge.bind(this);
+    while (el && !this._elementToDodge) {
+      if (el.scrollTop > 8) {
+        this._elementToDodge = el;
+      }
+      el = el.parentElement;
+    }
+    this._elementToDodge.addEventListener("scroll", this._dodge);
+  }
+
+  private _stopDodging() {
+    this._elementToDodge.removeEventListener("scroll", this._dodge);
+  }
+
+  private _dodge() {
+    var thisDodge = this._elementToDodge.scrollTop;
+    if (thisDodge > this._lastDodge) {
+      this.element.classList.remove("hidden");
+    }
+    if (thisDodge < this._lastDodge) {
+      this.element.classList.add("hidden");
+    }
+    this._lastDodge = thisDodge;
   }
 
 
