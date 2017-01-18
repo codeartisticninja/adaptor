@@ -45,9 +45,13 @@ html {
 
     &:last-child {
       .passage:last-child {
-        margin-top: 30vh;
-        margin-bottom: 30vh;
-        min-height: 40vh;
+        margin-top: 20vh;
+        // margin-bottom: 30vh;
+        min-height: 80vh;
+
+        /* &.complete {
+          margin-bottom: 0;
+        } */
       }
     }
   }
@@ -69,23 +73,13 @@ html {
 
 
   ul {
-    background-color: #ffe;
-    background-position: center;
-    box-shadow: 0 0 1em #000;
-    color: #000;
     font-weight: bold;
     opacity: 1;
-    padding: 1em;
-    padding-bottom: 10vh;
     text-align: right;
-    text-shadow: none;
     transition-duration: 1s;
-
-    position: fixed;
-    bottom: -.25em;
-    right: 10vw;
-    // width: 75vw;
-    // width: @page-width;
+    // min-height: 30vh;
+    padding-bottom: 1em;
+    max-height: 50vh;
 
     li {
       opacity: 1;
@@ -98,13 +92,14 @@ html {
         display: block;
         opacity: .7;
         padding: .5em;
+        text-decoration: none;
 
         &:focus, &:hover {
           opacity: 1;
         }
       }
       &.hidden {
-        max-height: 0;
+        opacity: 0;
       }
       /* &.shown {
         box-shadow: 0 0 1em #000;
@@ -116,7 +111,9 @@ html {
     } */
     &.hidden {
       opacity: 0;
-      bottom: -40vh;
+      padding-top: 5em;
+      position: absolute;
+      right: 1em;
     }
   }
 

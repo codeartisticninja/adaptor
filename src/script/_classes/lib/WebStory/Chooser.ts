@@ -7,16 +7,15 @@ import WebStory = require("./WebStory");
 /**
  * Chooser class
  * 
- * @date 16-01-2017
+ * @date 18-01-2017
  */
 
 class Chooser extends Teller {
 
   constructor(story:WebStory, element:HTMLElement) {
     super(story, element);
-    element.style.display = "none";
-    this.pause();
-    var delay = -500;
+    /* element.style.display = "none";
+    this.pause(); */
     for (var i=0;i<element.children.length;i++) {
       var child = element.children.item(i);
       if (child instanceof Element) {
@@ -38,11 +37,6 @@ class Chooser extends Teller {
       this.element.classList.add("hidden");
       this.element.removeAttribute("style");
       setTimeout(()=>{ this.element.classList.remove("hidden"); }, 50);
-      // this._startDodging();
-    } else {
-      clearTimeout(this._dodgeTO);
-      setTimeout(()=>{ this.element.classList.add("hidden"); }, 512);
-      this._dodgeTO = setTimeout(()=>{ this.element.classList.remove("hidden"); }, 2048);
     }
   }
 
@@ -57,14 +51,8 @@ class Chooser extends Teller {
     var _t = this;
     return function() {
       _t._showChoice(id);
-      setTimeout(function(){
-        setTimeout(function(){
-          _t.removeElement();
-          _t._stopDodging();
-        }, 1024);
-        _t.story.newSection();
-        _t.story.goTo("#"+id, _t);
-      }, 512);
+      _t.story.newSection();
+      _t.story.goTo("#"+id, _t);
     }
   }
 
@@ -72,9 +60,7 @@ class Chooser extends Teller {
     var _t = this;
     var p = this.element, i:number;
     var option:Element, options = p.children;
-    setTimeout(function() {
-      p.classList.add("hidden");
-    }, 256);
+    p.classList.add("hidden");
     for (i=0;i<options.length;i++) {
       option = options.item(i);
       if (option.id === id) {
@@ -83,36 +69,10 @@ class Chooser extends Teller {
         option.classList.add("hidden");
       }
     }
+    setTimeout(function(){
+      _t.removeElement();
+    }, 4096);
   }
-
-  private _startDodging() {
-    var el = <HTMLElement>this.story.displayElement;
-    this._elementToDodge = null;
-    this._dodge = this._dodge.bind(this);
-    while (el && !this._elementToDodge) {
-      if (el.scrollTop > 8) {
-        this._elementToDodge = el;
-      }
-      el = el.parentElement;
-    }
-    this._elementToDodge.addEventListener("scroll", this._dodge);
-  }
-
-  private _stopDodging() {
-    this._elementToDodge.removeEventListener("scroll", this._dodge);
-  }
-
-  private _dodge() {
-    var thisDodge = this._elementToDodge.scrollTop;
-    if (thisDodge > this._lastDodge) {
-      this.element.classList.remove("hidden");
-    }
-    if (thisDodge < this._lastDodge) {
-      this.element.classList.add("hidden");
-    }
-    this._lastDodge = thisDodge;
-  }
-
 
 }
 export = Chooser;
