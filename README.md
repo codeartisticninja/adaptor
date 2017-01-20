@@ -1,6 +1,6 @@
 The Adaptor
 ===========
-A mysterious text adventure about existence.
+A mysterious text adventure game about existence.
 
 A game for the #1gam challenge with the theme "Friends".
 
