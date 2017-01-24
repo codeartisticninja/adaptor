@@ -15,16 +15,16 @@ Jane is frustrated and anxious not having any identity. Without something to mak
 
 **What does the main character(s) do about it (if anything)?**  
 Pleads to PC to help find her personality..
-- PC suggests different interests and occupations that might suit her.
-- PC finds something to help her express herself.
+1. PC suggests different interests and occupations that might suit her.
+2. PC finds something to help her express herself.
 
 **What is the result of the action(s)?**  
-- Jane adapts to any suggestion posed to her. She feels better, but wonders if her life is really her own.
-- Jane struggles for something to express, but with PC's help learns to embrace failure..
+1. Jane adapts to any suggestion posed to her. She feels better, but wonders if her life is really her own.
+2. Jane struggles for something to express, but with PC's help learns to embrace failure..
 
 **How does it change the main character(s)?**  
-- Jane turns into a happy clueless robot made in PC's image. She becomes the perfect companion.
-- Jane learns to embrace failure and grow as an individual. She becomes an interesting friend full of surprises.
+1. Jane turns into a happy clueless robot made in PC's image. She becomes the perfect companion.
+2. Jane learns to embrace failure and grow as an individual. She becomes an interesting friend full of surprises.
 
 **Which questions remain unanswered?**  
 - Where did Jane originally come from? Who is going to miss her?

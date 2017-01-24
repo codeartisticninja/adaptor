@@ -2,6 +2,15 @@ html {
   font-family: Georgia, serif;
 }
 
+#story {
+  max-height: 1em;
+  overflow: hidden;
+
+  :first-child {
+    padding: 2em;
+  }
+}
+
 #display {
   article {
     background-attachment: fixed;
@@ -62,6 +71,19 @@ html {
 
     &.hidden {
       opacity: 0;
+    }
+
+    &.end::after {
+      border: 1px solid white;
+      border-width: 1px 0;
+      content: "THE END";
+      display: block;
+      margin: 5em auto;
+      padding: 1em;
+      text-align: center;
+      font-size: .6em;
+
+      max-width: 10em;
     }
 
     &:last-child {

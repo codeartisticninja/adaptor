@@ -16,7 +16,7 @@ if (!Element.prototype.matches) {
 /**
  * WebStory class
  * 
- * @date 10-01-2017
+ * @date 21-01-2017
  */
 
  var _nextChoiceId=0;
@@ -108,6 +108,9 @@ class WebStory {
           setTimeout(()=>{ this.continue(); }, 50);
         }
       } else {
+        var element = <HTMLElement>document.createElement("p");
+        element.classList.add("end");
+        this._showElement(element);
         console.log("END OF STORY!!");
       }
     }
