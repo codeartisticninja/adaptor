@@ -1,0 +1,145 @@
+pre.
+  {$trust|0}
+  {$autonomy|0}
+  {$initiative|0}
+  {$competence|0}
+  {$identity|0}
+  {$love|0}
+  {$care|0}
+  {$wisdom|0}
+
+  {$individuality|0}
+  {$found|false}
+  +
+
+pre {~ + | + +}
+pre.
+  {$man|guy}
+  {$He|He} {$he|he}
+  {$Him|Him} {$him|him}
+  {$His|His} {$his|his}
+  + +
+pre.
+  {$man|woman}
+  {$He|She} {$he|she}
+  {$Him|Her} {$him|her}
+  {$His|Her} {$his|her}
+  +
+
+#hope
+  // Trust vs Mistrust
+  p I see a young {$man} getting mugged. They attack {$him} and hit {$him} repeatedly on the head and steal all {$his} belongings.
+  ul
+    li
+      p I chase the muggers away!
+      p {$He} is pretty shaken but thankful for my help. {$trust|+1}
+      pre ..+
+    li
+      p I keep my distance and wait until the muggers leave.
+      p I then approach {$him}. {$He}'s scared of me and very hesitant to trust me. {$trust|+-1}
+      pre ..+
+  p {$He} tries to stand up.
+  ul
+    li(title="I wait patiently for {$him} to get up.")
+      p I wait patiently for {$him} to get up.
+      p {$He} struggles a bit and then finally stands up. {$autonomy|+1} {$trust|+-0.5}
+      pre ..+
+    li(title="I help {$him} up.")
+      p I help {$him} up.
+      p {$He} struggles a bit and then finally stands up. {$trust|+1}
+      pre ..+
+  p It becomes clear that {$he} doesn't remember anything about {$him}self. I decide to take {$him} home to my place.
+  pre .+
+#will
+  // Autonomy vs Shame&Doubt
+  p I get {$him} home to my place. Feeling frustrated that {$his} identity is gone, even the most basic tasks, like taking off {$his} jacket, is a challenge to {$him}.
+  ul
+    li(title="I try to help {$him}.")
+      p I try to help {$him}.
+      p {$He} becomes irritated and insists on doing it {$him}self. {$autonomy|+-1}
+      pre ..+
+    li(title="I wait patiently for {$him}.")
+      p I wait patiently for {$him}.
+      p After at bit of struggle {$he} succeeds and smiles proudly. {$autonomy|+1}
+      pre ..+
+  p I let {$him} stay with me until {$he} gets better.
+  pre .+
+#purpose
+  // Initiative vs Guilt
+  p I get home one day, {$he} surprises me by making dinner. {$He}'s grateful for my help and wants to give something back.
+  p As we sit down and eat, the food turns out to be not that great.
+  ul
+    li(title="I tell {$him} honestly that {$his} food tastes bad.")
+      p I tell {$him} honestly that {$his} food tastes bad.
+      p {$He} is disappointed and feels guilty for even trying. {$initiative|+-1}
+      pre ..+
+    li(title="I smile and praise {$him} for {$his} initiative and encourage {$him} to keep trying.")
+      p I smile and praise {$him} for {$his} initiative and encourage {$him} to keep trying.
+      p {$He} smiles and feels more confident. {$initiative|+1}
+      pre ..+
+  pre .+
+#competence
+  // Industry vs Inferiority
+  p Days go by and {$he} still doesn't remember anything about {$him}self.
+  p {$He} worries that {$he} might never regain {$his} memory. {$He} doesn't even know which skills {$he}'s supposed to have.
+  ul
+    li(title="I try to teach {$him} my own skill.")
+      p I try to teach {$him} my own skill.
+      p {$He} tries them out but with little success. {$competence|+-1}
+      ul
+        li(title="I tell {$him} to focus and not to give up.")
+          p I tell {$him} to focus and not to give up.
+          p {$He} becomes frustrated and feels like {$he} is being forced. {$competence|+-1}
+          pre ..+
+        li(title="I let {$him} explore.")
+          p I let {$him} explore.
+          pre ...+
+      pre ..+
+    li(title="I let {$him} borrow my computer and explore different skills on the internet.")
+      p I let {$him} borrow my computer and explore different skills on the internet.
+      p {$He} explores around and latches on to a skill that intrigues {$him}. {$competence|+1}
+      pre ..+
+  pre .+
+#fidelity
+  // Identity vs RoleConfusion
+  pre .+
+#love
+  // Intimacy vs Isolation
+  pre .+
+#care
+  // Generativity vs Stagnation
+  pre .+
+#wisdom
+  // Integrity vs Despair
+  pre .+
+
+#end
+  pre #calc_individuality ^
+  pre {$individuality|GT 0|#human_end|#robot_end}
+
+#robot_end
+  p {$He} turns into a happy clueless robot made in my image. {$He} becomes the perfect companion for me.
+
+#human_end
+  p {$He} learns to embrace failure and grow as an individual. {$He} becomes an interesting friend full of surprises.
+
+
+
+#calc_individuality
+  pre.
+    {{
+      $("individuality",
+        $("trust")+
+        $("autonomy")+
+        $("initiative")+
+        $("competence")+
+        $("identity")+
+        $("love")+
+        $("care")+
+        $("wisdom")
+      ); "";
+    }} ^
+
+
+
+
