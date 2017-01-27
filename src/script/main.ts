@@ -13,7 +13,7 @@ function init() {
   gameContainer = document.getElementById("game");
   information = document.getElementsByTagName("article")[0];
 
-  game = window["game"] = new GameApp("#story", "#display .passage");
+  game = window["game"] = new GameApp("#story", ".passage");
 }
 
 if (location.search === "?nojs") {
