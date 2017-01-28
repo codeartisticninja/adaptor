@@ -54,8 +54,8 @@ pre.
   p I see Eric tapping the window holding my coffee. Yea, might as well take a break. This test is going nowhere anyway.
   article.lab-break
   p "So... Any luck?" Eric hands me my coffee.
-  p "Nothing." I take a good long sip to relieve my disappointment. Eric shrugs.
-  p "Man, that Dr. Atman was a piece of work. It's a shame we don't know any more about his damn device."
+  p "Nothing." I take a good long sip to relieve my disappointment.
+  p Eric shrugs. "Man, that Dr. Atman was a piece of work. It's a shame we don't know any more about his damn device."
   p He takes a sip to calm down. We're both pretty tired after debugging all day.
   p "You're sure you didn't miss anything, right? She gave exacly the same output as the others?"
   ul
@@ -83,15 +83,46 @@ pre.
   p Eric takes his last sip of coffee and throws away the cup. "Back to the drawing board, huh? I'll go get her ready for disassembly."
   ul
     li
-      p "There's no rush."
+      p "Maybe we should keep this one."
       pre {$b|+1} ..+
     li
       p "You do that."
       pre {$b|+-1} ..+
   pre {$b|LT 0|#act3aa|#act3ab}
 #act3aa
+  article.blackout
+  p I barely finished my sentence as the power went out. "What the...?" A glimpse of Eric's face before darkness hits.
+  p Thud! Eric gasps for air! The crackling bones of his neck slowly turns into a paniced gurgle as he drowns in his own blood!
+  p My heart is pumping furiously as I hear Eric's body silently collapse to the floor. The subtle electric hum from the droid slowly closes in on me.
   pre #end
 #act3ab
+  p I turn my head to the testing room to see the droid standing in the open doorway.
+  article.droid
+  p "Ca... mil... la..."
+  p Did she just...? Could it be...? I look at Eric who stares at the trembling droid, hammer clenched in his hand.
+  ul
+    li(title='"Who is Camilla?"')
+      p "Who is Camilla?" I cross my fingers hoping she remembers this time.
+      p The droid smiles and raises her hand to point at something.
+      P Eric panics! "She's unpredictable!" He charges at her with his hammer!
+      p "No, Eric! Stop!"
+      p I jump out to stop him, but accidentally throw him against the emergency breaker behind him!
+      pre #act3aa
+    li(title="Calm")
+      pre ..+
+  p I gesture to Eric to calm down. His eyes shift back and forth between me and her. He reluctantly puts the hammer away.
+  p I look at the droid with a hopeful smile. "It's okay. We're not going to hurt you."
+  p She scurries behind the doorframe as I approache her as calmly as I can.
+  p "Ca- Camilla doesn't want to die..." She looks at me with begging eyes.
+  ul
+    li(title='"Camilla doesn\'t have to."')
+      pre ..+
+  p "Camilla doesn't have to." I smile reassuringly.
+  p I reach out my hand. She stares at it, looks back at me and cracks a hopeful smile as she places her metallic hand in mine.
+  p Eric just stares at us agasp and unsettled. "This... this isn't possible... is it..??"
+  p I can't help but chuckle at Eric's sceptical reaction. This is exactly how I pictured him if we would ever succeed.
+  p I smile at Camilla as I lead her outside the complex.
+  p "Come on, Camilla. Let's see how much you remember."
   pre #end
 
 #act2b
@@ -106,5 +137,9 @@ pre.
   pre #end
 
 #end
-  p I knew it was going to be an {~interesting|unusual} day the second I put my hand on that door handle.
-  
+  p I knew this was going to be an unusual day the second I put my hand on that door handle.
+  p(style="text-align:center") THE END
+  ul
+    li(title="Play Again?")
+      pre {{ location.reload(); }} ..+
+  p Loading Atman OS...
