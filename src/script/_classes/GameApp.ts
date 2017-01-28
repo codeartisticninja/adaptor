@@ -20,6 +20,9 @@ class GameApp extends BaseGameApp {
       this.story.continue();
     });
     document.querySelector("article").appendChild(startBtn);
+    requestAnimationFrame(()=>{
+      startBtn.focus();
+    });
     (<HTMLElement>document.querySelector("#display")).style.display = "none";
   }
 }

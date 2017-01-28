@@ -1,12 +1,12 @@
 pre.
-  {$robot|false}
   +
 
 #act1
+  pre {$b|0} +
   article.interrogation
   p I can already tell this is going to be an {~interesting|unusual} day the second I put my hand on the door handle.
-  p As I enter the room, a sudden eerie silence hits me right in the face, as if someone just hit the pause button on the {~universe|world}. She just sits there like a lifeless doll. No expression on her face, not even blinking her eyes as I sit down in front of her. Her clothes are unusually {~ordinary|nondescript} to give even a hint of what type of person she is.
-  p I glance down at the blank clipboard. We have absolutely nothing on her. I just know it is my job to question her.
+  p As I enter the room, a sudden eerie silence hits me right in the face, as if someone just hit the pause button on the {~universe|world}. She just sits there like a lifeless doll. No expression on her face, not even blinking her eyes as I sit down in front of her.
+  p I glance down at the blank clipboard. We have absolutely nothing on her. I'm the first one to question her.
   ul
     li
       p "...Hello...?"
@@ -16,30 +16,58 @@ pre.
   ul
     li
       p "What's your name?"
-      pre ..+
-    li
-      p "Where did you come from?"
-      pre ..+
+      pre {$b|+-1} ..+
     li
       p "Are you okay?"
-      pre ..+
+      pre {$b|+1} ..+
   p Her eyes begin to dart around as the cogs seem to slowly whir into motion. She slowly opens her mouth as if to respond.
   p "I... I... uhmm..."
   p She looked back at me with a {~puzzled|worried} gaze.
   p "I... don't... know...?"
   p That just raises even more questions. It seems I've got my work cut out for me. At least now I know she can talk. But there's something else about her that I can't quite put my finger on.
   ul
+    li(title="She seems so distant.")
+      p She seems so distant. Like an empty shell.
+      pre {$b|+-1} ..+
+    li(title="She seems so helpless.")
+      p She seems so helpless. Like a trapped animal.
+      pre {$b|+1} ..+
+  p It's worse than I thought. But I have to make sure just how bad it is.
+  p "Let's begin from the top. What is the first thing you remember?"
+  p She {~pauses|freezes} for a second.
+  p {$b|LT 0|"This room," she responds.|GT 0|"...you?" she replies with a confused look.|"I... don't remember anything."}
+  p This is hopeless. I don't seem to be getting anywhere and 'm quickly running out of questions.
+  p Well.. Except for the most important one.
+  ul
     li
-      p She seems so helpless.
-      pre #act2a
+      p "Do you know anyone called Camilla?"
+      pre {$b|+1} ..+
     li
-      p She seems so distant.
-      pre #act2b            
+      p "Is the Atman device malfunctioning?"
+      pre {$b|+-1} ..+
+  pre {$b|LT 0|#act2a|#act2b}
 
 #act2a
-#act2b
-
+  pre {$b|0} +
+  p "No," she replies.
+  p Damn. Not exactly the answers I was hoping for. Twenty years of research and development and still no sign of self awareness. 
+  pre {$b|LT 0|#act3aa|#act3ab}
 #act3aa
+  pre #end
 #act3ab
+  pre #end
+
+#act2b
+  pre {$b|0} +
+  p She gives me a strange look.
+  p "I'm so sorry. I don't know what you are talking about."
+  p
+  pre {$b|LT 0|#act3ba|#act3bb}
 #act3ba
+  pre #end
 #act3bb
+  pre #end
+
+#end
+  p I knew it was going to be an {~interesting|unusual} day the second I put my hand on that door handle.
+  
