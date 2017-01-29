@@ -4,8 +4,8 @@ pre.
 #act1
   pre {$b|0} +
   article.interrogation
-  p I can already tell this is going to be an {~interesting|unusual} day the second I put my hand on the door handle.
-  p As I enter the room, a sudden eerie silence hits me right in the face, as if someone just hit the pause button on the {~universe|world}. She just sits there like a lifeless doll. No expression on her face, not even blinking as I sit down in front of her.
+  p I can already tell this is going to be an {~interesting|unusual} day the second I put my hand on the doorhandle.
+  p As I enter the room, a sudden eerie silence hits me right in the face. She just sits there like a lifeless doll. No expression on her face, not even blinking as I sit down in front of her.
   p I glance down at the blank clipboard. We have absolutely nothing on her. I'm the first one to question her. Let's see if she can even hear me.
   ul
     li
@@ -36,21 +36,21 @@ pre.
   p "Let's begin from the top. What is the first thing you remember?"
   p She {~pauses|freezes} for a second.
   p {$b|LT 0|"This room," she responds.|GT 0|"...you?" she replies with a confused look.|"I... don't remember anything."}
-  p This is hopeless. I don't seem to be getting anywhere and 'm quickly running out of questions.
-  p Well.. Except for the most important one.
+  p This is hopeless. I don't seem to be getting anywhere and I'm quickly running out of questions.
+  p Well... Except for one.
   ul
     li
       p "Do you know anyone called Camilla?"
       pre {$b|+1} ..+
     li
-      p "Is the Atman device malfunctioning?"
+      p "Can you tell me how to fix the device?"
       pre {$b|+-1} ..+
   pre {$b|LT 0|#act2a|#act2b}
 
 #act2a
   pre {$b|0} +
   p "No," she replies.
-  p Damn. Not exactly the answers I was hoping for. Ten years of research and development and still no sign of self awareness. What are we doing wrong?
+  p Damn. Not exactly the answers I was hoping for. Ten years of reverse engineering and still no sign of self awareness. What are we doing wrong?
   p I see Eric tapping the window holding my coffee. Yea, might as well take a break. This test is going nowhere anyway.
   article.lab-break
   p "So... Any luck?" Eric hands me my coffee.
@@ -108,7 +108,7 @@ pre.
       p "No, Eric! Stop!"
       p I jump out to stop him, but accidentally throw him against the emergency breaker behind him!
       pre #act3aa
-    li(title="Calm")
+    li(title='"Calm down."')
       pre ..+
   p I gesture to Eric to calm down. His eyes shift back and forth between me and her. He reluctantly puts the hammer away.
   p I look at the droid with a hopeful smile. "It's okay. We're not going to hurt you."
@@ -118,28 +118,89 @@ pre.
     li(title='"Camilla doesn\'t have to."')
       pre ..+
   p "Camilla doesn't have to." I smile reassuringly.
-  p I reach out my hand. She stares at it, looks back at me and cracks a hopeful smile as she places her metallic hand in mine.
+  p I reach out my hand. She stares at it, looks back at me and cracks a hopeful smile as she places her robotic hand in mine.
   p Eric just stares at us agasp and unsettled. "This... this isn't possible... is it..??"
   p I can't help but chuckle at Eric's sceptical reaction. This is exactly how I pictured him if we would ever succeed.
   p I smile at Camilla as I lead her outside the complex.
-  p "Come on, Camilla. Let's see how much you remember."
+  p "Come on, Camilla. Let's go see what life has in store for you."
   pre #end
 
 #act2b
   pre {$b|0} +
   p She gives me a strange look.
-  p "I'm so sorry. I don't know what you are talking about."
-  p
+  p "I... don't know what you are talking about."
+  p Of course she wouldn't know. It was a longshot, but I had to at least try.
+  p It seems the damage has been done. If only I had run more tests before using my device on this innocent girl.
+  p "Is something wrong with me?" Camilla looks at me with her empty eyes. I can never forgive myself for what I've done.
+  ul
+    li(title='"It\'s going to be okay."')
+      p "It's going to be okay, sweetie."
+      p She cracks a hopeful smile.
+      p I hold her hand and smile back reassuringly.
+      pre {$b|+1} ..+
+    li(title='"I\'m so sorry."')
+      p "I'm so sorry, sweetie."
+      p She sheds a tear. "Can't you make me well again?"
+      p I struggle to come up with anything encouraging to tell her, but I just end up feeling worse than ever.
+      pre {$b|+-1} ..+
+  p The door opens. Mrs. Mathews peeks inside. "Sorry to disturb you, Dr. Atman. I thought you might want to see this."
+  p I follow her into the lab, leaving Camilla just staring at the wall.
+  article.lab
+  p She hands me the readout with some of the data highlighted.
+  p "It's not much, but I thought it might mean something."
+  p I look at the numbers. "This was all the device could extract?"
+  p "I'm afraid the rest is just noise. But this looks promising, right?"
+  ul
+    li(title='"I don\'t know."')
+      p "I don't know. It's just a name. It may not be enough."
+      pre {$b|+-1} ..+
+    li(title='"Maybe."')
+      p "Maybe. I guess it's better than nothing."
+      pre {$b|+1} ..+
+  p I wish I could be as optimistic as Mrs. Mathews. The device was only supposed to scan the subjects neural structure and store it on disk. It wasn't supposed to affect the subject at all.
+  p I look at the readout again. Most of it is garbled nonsense. Memories, personality. Nothing but noise. What little is left might be enough to seed a basic consciousness, but it would be an entirely new person. Not enough to bring Camilla back. Not enough to justify erasing her mind.
+  p Mrs. Mathews looks at Camilla through the one-way mirror. "She's not going to make it, is she?"
+  ul
+    li(title='"She\'s my responsibility."')
+      pre {$b|+1} ..+
+    li(title='"No. She isn\'t."')
+      pre {$b|+-1} ..+
   pre {$b|LT 0|#act3ba|#act3bb}
 #act3ba
+  p "No. I'm afraid she isn't. And it's my fault. Go home Mrs. Mathews. I'll finish up here."
+  p She gives me worried look before grabbing her coat and leaves.
+  article.interrogation
+  p I walk back inside and sit down in front of Camilla's blank stare. She looks at me like a stranger. "Hello... Do I know you?" She's already forgotten me. Her mind is slowly deteriorating.
+  #act3bbx
+    p "No... And you never will."
+    p I pull out the desk drawer and take out a gun. There's exacly two bullets left in the chamber.
+    pre .+
   pre #end
 #act3bb
-  pre #end
+  p "I can't change what I did to her. But as long as she is still alive, she is still my responsibility. You can go home now Mrs. Mathews. I'll finish up here."
+  p She gives me a cheerful smile before grabbing her coat and leaves. I go back to talk with Camilla.
+  article.interrogation
+  p She is still staring blankly into space. I regret not meeting her before the accident. Not knowing what she was like. Now it's all gone.
+  p She looks at me like a stranger. "Hello... Do I know you?" She's already forgotten me. Her mind is slowly deteriorating.
+  ul
+    li(title='"No."')
+      pre #act3bbx
+    li(title='"Not yet."')
+      pre ..+
+  p I fight to hold back my tears and force a friendly smile. "Not yet. Would you like to?"
+  p She smiles and nods. Her eyes beam with curiosity and wonder.
+  p For the next few hours I tell her all about myself. She is very patient with me as I share my life experiences, hopes, fears, anything that comes to mind. She gets excited about my successes and helps me get over my failures. Even through it gets harder and harder for her to form a coherent sentence, she still smiles just by the sound of my voice.
+  p I keep talking for a while until I notice she's become quiet. She just sits completely frozen staring and smiling. I gently touch her shoulder and she collapses to the floor. Her brain has finally shut down.
+  p I slowly kneel down beside her body and closes her eyes. I feel like crying but can't get myself to shed a single tear.
+  p But life most go on. I take one last sigh before I get up and sit down in front of my terminal and start coding.
+  p I will not let her death be in vain.
+  p(style="text-align:center") THE END
+  pre #end ul
 
 #end
-  p I knew this was going to be an unusual day the second I put my hand on that door handle.
+  p I knew this was going to be an unusual day the second I put my hand on that doorhandle.
   p(style="text-align:center") THE END
   ul
     li(title="Play Again?")
       pre {{ location.reload(); }} ..+
-  p Loading Atman OS...
+  p Loading Atman OS... Please wait...
