@@ -7,7 +7,7 @@ import WebStory = require("./WebStory");
 /**
  * Chooser class
  * 
- * @date 18-01-2017
+ * @date 30-01-2017
  */
 
 class Chooser extends Teller {
@@ -19,7 +19,8 @@ class Chooser extends Teller {
     for (var i=0;i<element.children.length;i++) {
       var child = element.children.item(i);
       if (child instanceof Element) {
-        var title = child.getAttribute("title") || child.firstElementChild.textContent;
+        if (!child.getAttribute("title")) child.setAttribute("title", child.firstElementChild.textContent);
+        var title = child.getAttribute("title");
         child.innerHTML = '<a href="javascript:void(0)"></a>';
         var a = child.querySelector("a");
         a.textContent = title;
@@ -50,6 +51,7 @@ class Chooser extends Teller {
   private _createChooseFn(id:string) {
     var _t = this;
     return function() {
+      _t.story.trackEvent(_t.element.querySelector("#"+id).getAttribute("title"));
       _t._showChoice(id);
       _t.story.newSection();
       _t.story.goTo("#"+id, _t);

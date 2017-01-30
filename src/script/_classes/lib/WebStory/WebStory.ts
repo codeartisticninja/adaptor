@@ -16,7 +16,7 @@ if (!Element.prototype.matches) {
 /**
  * WebStory class
  * 
- * @date 21-01-2017
+ * @date 30-01-2017
  */
 
  var _nextChoiceId=0;
@@ -198,6 +198,12 @@ class WebStory {
       if (this.tellers[selector] === teller) {
         this.tellers[selector] = undefined;
       }
+    }
+  }
+
+  trackEvent(event:string) {
+    if (window["_paq"]) {
+      window["_paq"].push(['trackEvent', document.title, event]);
     }
   }
 
