@@ -1,5 +1,6 @@
 {
   "baseUrl": "./",
   "appTitle": "The Adaptor",
-  "description": "A mysterious text adventure game about existence."
+  "description": "A mysterious text adventure game about existence.",
+  "twitter": "@codeartistic"
 }
