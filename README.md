@@ -18,4 +18,6 @@ Open your browser to http://localhost:8000/
 
 Credits
 -------
-Made by [codeartistic.ninja](http://the.codeartistic.ninja/)
+Code and story by [codeartistic.ninja](http://the.codeartistic.ninja/)
+        
+Background photos from [Nesnad](https://commons.wikimedia.org/wiki/File:Japanese_police_interrogation_room_-_movie_set_-_October_2014.jpg), [Michael Pereckas](https://www.flickr.com/photos/beigephotos/2282320621/), [Rafael Vianna Croffi](https://www.flickr.com/photos/rvc/6360419733/), [Matt Feifarek](https://www.flickr.com/photos/mad_city_bastard/2550528319/) and [Vit Goff](https://www.flickr.com/photos/viticusgoff/4846052562/)
